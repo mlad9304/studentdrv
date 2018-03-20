@@ -116,6 +116,8 @@ app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
+app.get('/forgot', userController.getForgot);
+app.post('/forgot', userController.postForgot);
 /**
  * API examples routes.
  */
