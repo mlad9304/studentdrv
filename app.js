@@ -26,6 +26,7 @@ dotenv.load({ path: '.env.example' });
  */
 const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
+const contactController = require('./controllers/contact');
 
 /**
  * API keys and Passport configuration.
@@ -123,6 +124,8 @@ app.post('/account/profile', passportConfig.isAuthenticated, userController.post
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
+app.get('/contact', contactController.getContact);
+app.post('/contact', contactController.postContact);
 /**
  * API examples routes.
  */
