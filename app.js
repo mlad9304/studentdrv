@@ -126,6 +126,7 @@ app.post('/account/delete', passportConfig.isAuthenticated, userController.postD
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 app.get('/contact', contactController.getContact);
 app.post('/contact', contactController.postContact);
+
 /**
  * API examples routes.
  */
@@ -136,7 +137,10 @@ app.post('/contact', contactController.postContact);
  * OAuth authentication routes. (Sign in)
  */
 
-
+app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'public_profile'] }));
+app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), (req, res) => {
+  res.redirect(req.session.returnTo || '/');
+});
 
  /**
  * OAuth authorization routes. (API examples)
