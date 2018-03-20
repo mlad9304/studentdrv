@@ -39,6 +39,11 @@ const passportConfig = require('./config/passport');
 var app = express();
 
 /**
+ * http to https
+ */
+app.enable("trust proxy");
+
+/**
  * Connect to MongoDB.
  */
 mongoose.Promise = global.Promise;
