@@ -25,6 +25,7 @@ dotenv.load({ path: '.env.example' });
  * Controllers (route handlers).
  */
 const homeController = require('./controllers/home');
+const userController = require('./controllers/user');
 
 /**
  * API keys and Passport configuration.
@@ -112,7 +113,9 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
  * Primary app routes.
  */
 app.get('/', homeController.index);
-
+app.get('/login', userController.getLogin);
+app.post('/login', userController.postLogin);
+app.get('/logout', userController.logout);
 
 /**
  * API examples routes.
