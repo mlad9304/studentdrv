@@ -152,6 +152,11 @@ app.get('/auth/twitter/callback', passport.authenticate('twitter', { failureRedi
   res.redirect(req.session.returnTo || '/');
 });
 
+app.get('/auth/google', passport.authenticate('google', { scope: 'profile email' }));
+app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), (req, res) => {
+  res.redirect(req.session.returnTo || '/');
+});
+
  /**
  * OAuth authorization routes. (API examples)
  */
