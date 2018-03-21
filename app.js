@@ -157,6 +157,21 @@ app.get('/auth/google/callback', passport.authenticate('google', { failureRedire
   res.redirect(req.session.returnTo || '/');
 });
 
+app.get('/auth/github', passport.authenticate('github'));
+app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), (req, res) => {
+  res.redirect(req.session.returnTo || '/');
+});
+
+app.get('/auth/linkedin', passport.authenticate('linkedin', { state: 'SOME STATE' }));
+app.get('/auth/linkedin/callback', passport.authenticate('linkedin', { failureRedirect: '/login' }), (req, res) => {
+  res.redirect(req.session.returnTo || '/');
+});
+
+app.get('/auth/instagram', passport.authenticate('instagram'));
+app.get('/auth/instagram/callback', passport.authenticate('instagram', { failureRedirect: '/login' }), (req, res) => {
+  res.redirect(req.session.returnTo || '/');
+});
+
  /**
  * OAuth authorization routes. (API examples)
  */
